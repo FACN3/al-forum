@@ -4,8 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js"
+=======
+    "test": "node test/test.js | tap-spec",
+      "start": "node ./src/server.js"
+>>>>>>> master
   },
   "repository": {
     "type": "git",
@@ -17,8 +22,14 @@
     "url": "https://github.com/FACN3/al-forum/issues"
   },
   "homepage": "https://github.com/FACN3/al-forum#readme",
+<<<<<<< HEAD
   "dependencies": {
     "env2": "^2.2.0",
     "pg": "^7.4.0"
+=======
+  "devDependencies": {
+    "tap-spec": "^4.1.1",
+    "tape": "^4.8.0"
+>>>>>>> master
   }
 }
