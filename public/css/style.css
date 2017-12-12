@@ -55,7 +55,12 @@ body {
   align-self: center;
   margin: 0.5rem 0;
   border-radius: 0.5rem;
+  border: solid 1px black;
   width: 50%;
+  color: white;
+  font-weight: bold;
+  font-family: Nunito;
+  background-color: #7F6A00;
 }
 
 
