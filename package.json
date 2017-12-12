@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+
     "test": "node test/test.js | tap-spec",
       "start": "node ./src/server.js"
   },
@@ -17,6 +18,10 @@
     "url": "https://github.com/FACN3/al-forum/issues"
   },
   "homepage": "https://github.com/FACN3/al-forum#readme",
+  "dependencies": {
+    "env2": "^2.2.0",
+    "pg": "^7.4.0"
+  },
   "devDependencies": {
     "tap-spec": "^4.1.1",
     "tape": "^4.8.0"
