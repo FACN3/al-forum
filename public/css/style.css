@@ -1,0 +1,12 @@
+body {
+  background-color: #FFE97F;
+  justify-content: center;
+  height: 90vh;
+  width: 100vw;
+  align-items: center;
+}
+
+h1 {
+  font-size: 200%;
+  font-weight: bold;
+}
