@@ -1,12 +1,88 @@
 body {
   background-color: #FFE97F;
-  justify-content: center;
   height: 90vh;
-  width: 100vw;
-  align-items: center;
+  width: 100%;
 }
 
-h1 {
-  font-size: 200%;
+.title {
+  display: flex;
+  font-family: Nunito;
+  justify-content: center;
   font-weight: bold;
+  font-size: 500%;
+  margin-top: 1rem;
+}
+
+.subTitle {
+  display: flex;
+  font-family: Nunito;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 250%;
+  margin-top: 1rem;
+}
+
+
+.login-form-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 75vh;
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-self: center;
+}
+
+.login-form-input {
+  margin: 0.5rem 0;
+
+}
+
+.login-form-button {
+  align-self: center;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  width: 50%;
+}
+
+
+
+.connect {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-family: Nunito;
+  color: white;
+  top: 2%;
+  right: 2%;
+}
+
+.login {
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: solid 1px black;
+  background-color: #7F6A00;
+}
+
+.login a {
+  text-decoration: none;
+  color: white;
+}
+
+.sign-up {
+  margin-top: 0.5rem;
+  color: #0094FF;
+}
+
+.sign-up a {
+  text-decoration: none;
+  color: #0094FF;
+}
+
+input[placeholder] {
+   text-align: center;
+   font-family: Nunito;
 }
