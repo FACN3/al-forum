@@ -8,7 +8,7 @@ const getPosts = require("./database/getPosts");
 const router = (req, res) => {
   const url = req.url;
   if (url === "/") {
-    handler(__dirname + "/../index.html", "text/html", res);
+    handler(__dirname + "/../public/html/index.html", "text/html", res);
     getPosts();
   } else {
     res.writeHead(404);
