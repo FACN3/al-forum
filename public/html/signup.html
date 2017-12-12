@@ -8,10 +8,16 @@
   </head>
   <body>
     <h1>WELCOOOOOME TO OUR MAGICAL WORLD</h1>
-    <form class="form" action="index.html" method="post">
-      <input type="text" placeholder="username" name="username">
-      <input type="text" placeholder="password" name="password">
+    <form class="form" id='signUpForm'>
+      <input type="text" placeholder="username" name="username" id="username">
+      <input type="text" placeholder="your name" name="your name" id="fullname">
+      <input type="text" placeholder="password" name="password" id="password">
+      <input type="text" placeholder="confirm password" name="confirm password" id="cfpassword">
+      <input type="submit" value="Submit">
+      <div id='errorMessage'></div>
     </form>
+
+
     <script type="text/javascript" src="../js/signup.js">
     </script>
   </body>
