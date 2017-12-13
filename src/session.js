@@ -12,15 +12,13 @@ module.exports = {
     res.end();
   },
 
-  validate: (cookie, res) => {
+  validate: (cookie, cb) => {
     if (cookie.jwt) {
       jwt.verify(cookie.jwt, secret, (err, result) => {
         if (err) {
-          res.writeHead(200);
-          res.end(JSON.stringify({ username: "" }));
+          cb(err);
         } else {
-          res.writeHead(200, { "Content-Type": "application/json" });
-          res.end(JSON.stringify({ username: result }));
+          cb(null, result);
         }
       });
     }
