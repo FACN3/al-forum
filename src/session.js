@@ -7,7 +7,7 @@ module.exports = {
     const signedCookie = jwt.sign(username, secret);
     res.writeHead(302, {
       "set-cookie": `jwt=${signedCookie}`,
-      Location: "/"
+      Location: "/post.html"
     });
     res.end();
   },
