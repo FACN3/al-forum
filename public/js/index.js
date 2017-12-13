@@ -14,6 +14,7 @@ function logStatus() {
         document.getElementById("logout").style.display = "block";
         document.getElementById("login").style.display = "none";
         document.getElementById("signup").style.display = "none";
+        window.location.replace('/post.html');
       } else {
         document.getElementById("logout").style.display = "none";
         document.getElementById("login").style.display = "block";
