@@ -6,6 +6,13 @@ body {
   justify-content: center;
 }
 
+.errorMessage {
+  display: flex;
+  color: red;
+  font-weight: bold;
+  justify-content: center;
+}
+
 .title {
   display: flex;
   font-family: Nunito;
@@ -35,6 +42,7 @@ body {
 
 .login-form-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 75vh;
 }
