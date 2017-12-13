@@ -5,7 +5,8 @@ const getUser = require("./database/getUser");
 const addPost = require("./database/addPost");
 const getPosts = require("./database/getPosts");
 const comparePasswordHelper = require("./comparePasswordHelper");
-
+const cookie = require('cookie');
+const {validate} = require('./session')
 const { parse } = require("url");
 const qs = require("querystring");
 
@@ -72,10 +73,13 @@ const router = (req, res) => {
       Location: "/"
     });
     res.end();
+  }else if (url == "/check_auth") {
+   validate(cookie.parse(req.headers.cookie),res);
   } else {
     res.writeHead(404);
     res.end("page not found");
   }
 };
+
 
 module.exports = router;
