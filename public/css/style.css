@@ -1,8 +1,18 @@
+
+@media (min-width:500px)  {
+
 body {
   background-color: #FFE97F;
   height: 90vh;
   width: 100%;
   display: flex;
+  justify-content: center;
+}
+
+.errorMessage {
+  display: flex;
+  color: red;
+  font-weight: bold;
   justify-content: center;
 }
 
@@ -35,6 +45,7 @@ body {
 
 .login-form-wrapper {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   height: 75vh;
 }
@@ -48,7 +59,7 @@ body {
 
 .login-form-input {
   margin: 0.5rem 0;
-
+  display: flex;
 }
 
 .login-form-button {
@@ -124,4 +135,5 @@ body {
 input[placeholder] {
    text-align: center;
    font-family: Nunito;
+}
 }

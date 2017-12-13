@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <meta name="viewport" content="width=device-width">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/mobile.css">
+  <link rel="stylesheet" href="./css/style.css">
   <meta charset="utf-8">
   <title>al forum</title>
 </head>
+
 <body>
   <div class="connect">
     <p class="login"><a href="./login.html">Login</a></p>
     <p class="sign-up"><a href="./signup.html">Sign up</a></p>
   </div>
   <div class="connect2">
-    <p class="home"><a href="./index.html">Home</a></p>
+    <p class="home"><a href="/">Home</a></p>
   </div>
   <div>
     <h1 class='title'>AL Forum</h1>
@@ -22,13 +24,12 @@
     <div class="login-form-wrapper">
       <form class="login-form" method="post" action="/add_user" id="signUpForm">
         <input type="text" placeholder="Username" name="username" class='login-form-input' id="username">
-         <input type="text" placeholder="Your name" name="name" class='login-form-input' id="fullname">
+        <input type="text" placeholder="Your name" name="name" class='login-form-input' id="fullname">
         <input type="password" placeholder="Password" name="password" class='login-form-input' id="password">
-         <input type="password" placeholder="Confirm password" name="confirm password" class='login-form-input' id="cfpassword">
-        <input class="login-form-button" type="submit" name="Sign up" value="Sign up" value="" >
-          <div id='errorMessage'></div>
-
+        <input type="password" placeholder="Confirm password" name="confirm password" class='login-form-input' id="cfpassword">
+        <input class="login-form-button" type="submit" name="Sign up" value="Sign up" value="">
       </form>
+      <div class="errorMessage" id='errorMessage'></div>
     </div>
   </div>
 
