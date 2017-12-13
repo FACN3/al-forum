@@ -12,7 +12,9 @@ document
   });
 
 function checkUser(username) {
-  fetch('/check_user?username='+username,"GET",function(result){
+  fetch('/check_user?username='+username,"GET",function(response){
+    var result = JSON.parse(response);
+
     if (!result.state) {
       console.log("result.state is false!!");
       errorMessage("UserName already Exists!");
@@ -57,8 +59,9 @@ function fetch(url,method,cb,parameters){
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.status === 200 && xhr.readyState === 4) {
-      var result = JSON.parse(xhr.responseText);
-         cb(result);
+         cb(xhr.responseText);
+         console.log(xhr.status);
+         console.log(xhr.responseText);
     }
   };
 
@@ -67,9 +70,11 @@ function fetch(url,method,cb,parameters){
 }
 
 function signupUser(username,name,password){
-
+/*
  fetch("/add_user","POST",function(result){
 
  },"username="+username+"&name="+name+"&password="+password);
+*/
+document.getElementById("signUpForm").submit();
 
 }
