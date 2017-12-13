@@ -22,26 +22,27 @@
   <div class="connect2">
     <p class="home"><a href="/">Home</a></p>
   </div>
+  <div>
   <div class="titles2">
-<div class="posting-wrapper">
-<div class="title">
-  <h1>Forum Posts</h1>
-</div>
-<form class="postForm" id="postForm" action="/add_post" method="post">
-<input class="posting-input" type="text" name="title" placeholder="Title">
- <input id="postinfContent" class="posting-input" type="text" name="content" placeholder="Content">
- <button class="postingButton" type="submit" value="button">SHARE YOUR THOUGHTS</button>
-</form>
-</div>
-<div id="container">
-</div>
-
+    <div class="posting-wrapper">
+      <div class="title">
+        <h1>Forum Posts</h1>
+      </div>
+        <form class="postForm" id="postForm" action="/add_post" method="post">
+          <input class="posting-input" type="text" name="title" placeholder="Title">
+          <textarea id="postingContent" cols="40" rows="10" class="posting-input" type="text" name="content" placeholder="Content" style=""></textarea>
+          <button class="postingButton" type="submit" value="button">SHARE YOUR THOUGHTS</button>
+        </form>
+      </div>
+      <div id="container">
+      </div>
+    </div>
   </div>
   </div>
   <div class="connect2">
     <p class="home"><a href="/">Home</a></p>
   </div>
-<script src="../js/post.js"></script>
+  <script src="../js/post.js"></script>
 </body>
 
 </html>

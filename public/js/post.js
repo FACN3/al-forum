@@ -23,13 +23,35 @@ function populate(response) {
   if (response.rows) {
     username = response.username;
     response.rows.forEach(function(post) {
+      userSpan = document.createElement('span');
+      userSpan.textContent = post.user_id;
+      userSpan.className = "userName"
+      timeSpan = document.createElement('span');
+      console.log(post);
+
+      timeSpan.textContent = post.timestamp.split('.')[0];
+
+      div = document.createElement('div');
+      div.className = 'postDiv';
+      userDiv = document.createElement('div');
+      userDiv.className = 'userDiv';
+
       title = document.createElement("h2");
       title.textContent = post.title;
+      console.log(post.title);
+      title.className = "postTitle";
 
       span = document.createElement("span");
       span.textContent = post.content;
-      container.appendChild(title);
-      container.appendChild(span);
+
+      userDiv.appendChild(title);
+      userDiv.appendChild(userSpan);
+      div.appendChild(timeSpan);
+      div.appendChild(userDiv);
+      div.appendChild(span);
+      container.appendChild(div);
+      span.className = "postMessage";
+      console.log('this is userid',post.user_id);
     });
   } else {
     message = document.createElement("h2");
