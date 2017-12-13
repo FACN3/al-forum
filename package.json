@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FACN3/al-forum#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "env2": "^2.2.0",
     "pg": "^7.4.0"
   },
