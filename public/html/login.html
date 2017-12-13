@@ -21,15 +21,14 @@
     <h1 class='title'>AL Forum</h1>
     <h3 class="subTitle">Please log in</h3>
     <div class="login-form-wrapper">
-      <form class="login-form" action="index.html" method="post">
-        <input type="text" placeholder="Username" name="username" class='login-form-input'>
-        <input type="password" placeholder="Password" name="password" class='login-form-input'>
-        <input class="login-form-button" type="button" name="Login" value="Login" value="">
+      <form class="login-form" id="login" action="/login" method="post">
+        <input type="text" placeholder="Username" id="username" name="username" class='login-form-input'>
+        <input type="password" placeholder="Password"id="password" name="password" class='login-form-input'>
+        <input class="login-form-button" type="submit" name="Login" value="Login" value="">
+        <div id='errorMessage'></div>
       </form>
     </div>
   </div>
-
-
   <script type="text/javascript" src="../js/login.js">
   </script>
 </body>

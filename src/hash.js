@@ -1,8 +1,8 @@
 const bcrypt = require("bcryptjs");
 
 const hashPassword = (password, callback) => {
-  bcrypt.hash(password, 10, (error, hash)  => {
-    if(error){
+  bcrypt.hash(password, 10, (error, hash) => {
+    if (error) {
       callback(error);
     } else {
       callback(null, hash);
@@ -10,9 +10,9 @@ const hashPassword = (password, callback) => {
   });
 };
 
-const comparePasswords = (password, hashedPassword, callback) => {
+const comparePassword = (password, hashedPassword, callback) => {
   bcrypt.compare(password, hashedPassword, (error, res) => {
-    if(error){
+    if (error) {
       callback(error);
     } else {
       callback(null, res);
@@ -20,14 +20,7 @@ const comparePasswords = (password, hashedPassword, callback) => {
   });
 };
 
-
-
-
-
-
-
-
 module.exports = {
   hashPassword,
-  comparePasswords
+  comparePassword
 };
