@@ -1,12 +1,11 @@
 const pool = require("./db_connection");
 
-const getPosts = () => {
+const getPosts = cb => {
   pool.query("select * from posts;", (err, res) => {
     if (err) {
-      console.log(err);
+      cb(err);
     } else {
-      console.log(res.rows);
-      console.log("success");
+      cb(null, res);
     }
   });
 };
