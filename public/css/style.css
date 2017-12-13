@@ -1,213 +1,211 @@
 body {
-  background-color: #FFE97F;
+  background-color: #ffe97f;
   height: 90vh;
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-@media (min-width:500px)  {
+@media (min-width: 500px) {
+  .errorMessage {
+    display: flex;
+    color: red;
+    font-weight: bold;
+    justify-content: center;
+  }
 
-.errorMessage {
-  display: flex;
-  color: red;
-  font-weight: bold;
-  justify-content: center;
-}
+  .postTitle {
+    font-size: 150%;
+    font-weight: bold;
+  }
 
-.postTitle {
-  font-size: 150%;
-  font-weight: bold;
-}
+  .postMessage {
+    font-weight: normal;
+  }
 
-.postMessage {
-  font-weight: normal;
-}
-
-/*.userName {
+  /*.userName {
   display: flex;
   align-self: stretch;
 }*/
 
-.userDiv {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
+  .userDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .condel {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    border-radius: 2rem;
+    width: 100%;
+  }
+  .title {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 500%;
+    margin-top: 1rem;
+  }
 
-.title {
-  display: flex;
-  font-family: Nunito;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 500%;
-  margin-top: 1rem;
-}
+  .postDiv {
+    border: solid 2.5px black;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    width: 30rem;
+    overflow-wrap: break-word;
+  }
 
-.postDiv {
-border: solid 2.5px black;
-border-radius: 0.5rem;
-margin: 1rem 0;
-padding: 1rem 1rem;
-width: 30rem;
-overflow-wrap: break-word;
-}
+  .posting-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75vh;
+  }
 
-.posting-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 75vh;
-}
+  .postForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-item: center;
+  }
 
-.postForm {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-item: center;
+  .posting-input {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0.5rem 0;
+  }
 
-}
+  #postingContent {
+    display: flex;
+    padding: 1rem 1rem;
+    text-align: center;
+  }
 
+  .postingButton {
+    align-self: center;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    width: 50%;
+    color: white;
+    font-weight: bold;
+    font-family: Nunito;
+    background-color: #7f6a00;
+  }
 
-.posting-input {
-  display: flex;
-  font-family: Nunito;
-  justify-content: center;
-  font-weight: bold;
-  margin: 0.5rem 0
-}
+  .subTitle {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 250%;
+    margin-top: 1rem;
+  }
 
-#postingContent {
-  display: flex;
-  padding: 1rem 1rem;
-  text-align: center;
-}
+  .titles2 {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+  }
 
-.postingButton {
-  align-self: center;
-  margin: 0.5rem 0;
-  border-radius: 0.5rem;
-  border: solid 1px black;
-  width: 50%;
-  color: white;
-  font-weight: bold;
-  font-family: Nunito;
-  background-color: #7F6A00;
-}
+  .login-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75vh;
+  }
 
+  .login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+  }
 
-.subTitle {
-  display: flex;
-  font-family: Nunito;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 250%;
-  margin-top: 1rem;
-}
+  .login-form-input {
+    margin: 0.5rem 0;
+    display: flex;
+  }
 
-.titles2 {
-  display: flex;
-  font-family: Nunito;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  font-weight: bold;
-}
+  .login-form-button {
+    align-self: center;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    width: 50%;
+    color: white;
+    font-weight: bold;
+    font-family: Nunito;
+    background-color: #7f6a00;
+  }
 
-.login-form-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 75vh;
-}
+  .connect {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    font-family: Nunito;
+    color: white;
+    top: 2%;
+    right: 2%;
+  }
 
-.login-form {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-self: center;
-}
+  .connect2 {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    font-family: Nunito;
+    color: white;
+    top: 2%;
+    left: 2%;
+  }
 
-.login-form-input {
-  margin: 0.5rem 0;
-  display: flex;
-}
+  .login {
+    display: block;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: solid 1px black;
+    background-color: #7f6a00;
+    font-weight: bold;
+  }
 
-.login-form-button {
-  align-self: center;
-  margin: 0.5rem 0;
-  border-radius: 0.5rem;
-  border: solid 1px black;
-  width: 50%;
-  color: white;
-  font-weight: bold;
-  font-family: Nunito;
-  background-color: #7F6A00;
-}
+  .login a {
+    text-decoration: none;
+    color: white;
+  }
 
+  .home {
+    display: block;
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border: solid 1px black;
+    background-color: #7f6a00;
+  }
 
+  .home a {
+    text-decoration: none;
+    color: white;
+  }
 
-.connect {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  font-family: Nunito;
-  color: white;
-  top: 2%;
-  right: 2%;
-}
+  .sign-up {
+    margin-top: 0.5rem;
+    color: #0094ff;
+  }
 
-.connect2 {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  font-family: Nunito;
-  color: white;
-  top: 2%;
-  left: 2%;
-}
+  .sign-up a {
+    text-decoration: none;
+    color: #0094ff;
+  }
 
-
-.login {
-  display: block;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border: solid 1px black;
-  background-color: #7F6A00;
-  font-weight: bold;
-}
-
-.login a {
-  text-decoration: none;
-  color: white;
-}
-
-.home {
-  display: block;
-  color: white;
-  padding: 0.5rem 1.5rem;
-  border: solid 1px black;
-  background-color: #7F6A00;
-}
-
-
-.home a {
-  text-decoration: none;
-  color: white;
-}
-
-.sign-up {
-  margin-top: 0.5rem;
-  color: #0094FF;
-}
-
-.sign-up a {
-  text-decoration: none;
-  color: #0094FF;
-}
-
-input[placeholder] {
-   text-align: center;
-   font-family: Nunito;
-}
+  input[placeholder] {
+    text-align: center;
+    font-family: Nunito;
+  }
 }

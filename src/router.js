@@ -5,6 +5,7 @@ const getUser = require("./database/getUser");
 const addPost = require("./database/addPost");
 const getPosts = require("./database/getPosts");
 const comparePasswordHelper = require("./comparePasswordHelper");
+const deletePost = require("./database/deletePost");
 const cookie = require("cookie");
 const { validate } = require("./session");
 const { parse } = require("url");
@@ -49,7 +50,8 @@ const router = (req, res) => {
     handler(__dirname + path, type, res);
   } else if (url.split("?")[0] == "/check_user") {
     console.log(url.split("=")[1]);
-    checkUser(url.split("=")[1], result => {
+    checkUser(url.split("=")[1], (err, result) => {
+      if (err) return;
       res.writeHead(200, { "content-type": "application/json" });
       res.end(JSON.stringify({ state: result }));
     });
@@ -129,6 +131,21 @@ const router = (req, res) => {
           });
         }
       });
+    });
+  } else if (url.split("?")[0] == "/delete_post") {
+    validate(cookie.parse(req.headers.cookie), (err, user_id) => {
+      if (err) {
+        res.end(JSON.stringify({ delteted: false }));
+      } else {
+        res.writeHead(200, { "content-type": "application/json" });
+        deletePost(url.split("=")[1], (err, success) => {
+          if (err) {
+            res.end(JSON.stringify({ deleted: false }));
+          } else {
+            res.end(JSON.stringify({ deleted: true }));
+          }
+        });
+      }
     });
   } else {
     res.writeHead(404);
