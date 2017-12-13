@@ -56,6 +56,45 @@
     margin-top: 1rem;
   }
 
+  .posting-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75vh;
+  }
+
+  .postForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-item: center;
+  }
+
+
+  .posting-input {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0.5rem 0
+  }
+
+  #postinfContent {
+    padding: 2.5rem 2.5rem;
+  }
+
+  .postingButton {
+    align-self: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-family: Nunito;
+    background-color: #7F6A00;
+  }
 
   .login-form-wrapper {
     display: flex;
@@ -123,6 +162,7 @@
     padding: 0.75rem 1.25rem;
     border: solid 1px black;
     background-color: #7F6A00;
+    font-weight: bold;
   }
 
   .login a {
