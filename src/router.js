@@ -4,9 +4,12 @@ const checkUser = require("./database/checkUser");
 const getUser = require("./database/getUser");
 const addPost = require("./database/addPost");
 const getPosts = require("./database/getPosts");
-const {parse} = require('url');
-const qs = require('querystring');
-const addUserHandler = require('./addUserHandler')
+const comparePasswordHelper = require("./comparePasswordHelper");
+
+const { parse } = require("url");
+const qs = require("querystring");
+
+const addUserHandler = require("./addUserHandler");
 const router = (req, res) => {
   const url = req.url;
     console.log(url);
@@ -32,32 +35,44 @@ const router = (req, res) => {
         "/js/login.js" : "application/javascript",
         "/js/signup.js" : "application/javascript"}[url]
 
-
   // console.log(url);
   if (path) {
     handler(__dirname + path, type, res);
-
-  } else if (url.split('?')[0]=="/check_user"){
-    console.log(url.split('=')[1]);
-    checkUser(url.split('=')[1], (result)=>{
-
-           res.writeHead(200,{'content-type':"application/json"});
-           res.end(JSON.stringify({'state':result}));
-
-    })
-  } else if(url=="/add_user"){
-      paramets="";
-      req.on('data',(chunk)=>{
-        paramets+=chunk;
-      });
-      req.on('end',()=>{
-       const values= qs.parse(paramets);
-    const    { username, name, password} = values;
-      addUserHandler(username, name, password, res)
-        console.log(values);
-      });
-
-  }else {
+  } else if (url.split("?")[0] == "/check_user") {
+    console.log(url.split("=")[1]);
+    checkUser(url.split("=")[1], result => {
+      res.writeHead(200, { "content-type": "application/json" });
+      res.end(JSON.stringify({ state: result }));
+    });
+  } else if (url == "/add_user") {
+    paramets = "";
+    req.on("data", chunk => {
+      paramets += chunk;
+    });
+    req.on("end", () => {
+      const values = qs.parse(paramets);
+      const { username, name, password } = values;
+      addUserHandler(username, name, password, res);
+      console.log(values);
+    });
+  } else if (url == "/login") {
+    paramets = "";
+    req.on("data", chunk => {
+      paramets += chunk;
+    });
+    req.on("end", () => {
+      const values = qs.parse(paramets);
+      const { username, password } = values;
+      comparePasswordHelper(username, password, res);
+      console.log(values);
+    });
+  } else if (url == "/logout") {
+    res.writeHead(302, {
+      "Set-cookie": `jwt=logged_out`,
+      Location: "/"
+    });
+    res.end();
+  } else {
     res.writeHead(404);
     res.end("page not found");
   }
