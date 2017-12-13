@@ -1,0 +1,192 @@
+@media (max-width:815px)  {
+
+  .title {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 250%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width:500px)  {
+
+  body {
+    background-color: #FFE97F;
+    height: 90vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .errorMessage {
+    display: flex;
+    color: red;
+    font-weight: bold;
+    justify-content: center;
+  }
+
+  .title {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 250%;
+    margin-top: 1rem;
+  }
+
+
+  .titles2 {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .subTitle {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-top: 1rem;
+  }
+
+
+  .login-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 75vh;
+  }
+
+  .login-form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  .login-form-input {
+    margin: 0.5rem 0;
+    padding: 0.5rem 1.5rem;
+
+  }
+
+  .login-form-button {
+    align-self: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    width: 100%;
+    color: white;
+    font-weight: bold;
+    font-family: Nunito;
+    background-color: #7F6A00;
+  }
+
+
+
+  .connect {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    font-family: Nunito;
+    color: white;
+    top: 0%;
+    right: 0%;
+  }
+
+  .connect2 {
+    position: absolute;
+    text-align: center;
+    font-weight: bold;
+    font-family: Nunito;
+    color: white;
+    top: 0%;
+    left: 0%;
+  }
+
+  img {
+    width: 35%;
+    height: 25%;
+  }
+
+  .login {
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: solid 1px black;
+    background-color: #7F6A00;
+  }
+
+  .login a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .home {
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border: solid 1px black;
+    background-color: #7F6A00;
+  }
+
+
+  .home a {
+    text-decoration: none;
+    color: white;
+  }
+
+  .sign-up {
+    margin-top: 0.5rem;
+    color: #0094FF;
+  }
+
+  .sign-up a {
+    text-decoration: none;
+    color: #0094FF;
+  }
+
+  input[placeholder] {
+     text-align: center;
+     font-family: Nunito;
+  }
+}
+
+@media (max-width:360px)  {
+
+  .title {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
+    font-size: 200%;
+    margin-top: 1rem;
+  }
+
+
+  .titles2 {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .subTitle {
+    display: flex;
+    font-family: Nunito;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 100%;
+    margin-top: 1rem;
+  }
+
+}

@@ -9,20 +9,25 @@ const qs = require('querystring');
 const addUserHandler = require('./addUserHandler')
 const router = (req, res) => {
   const url = req.url;
+    console.log(url);
   const path = {"/" : "/../public/html/index.html",
+        "/wave.gif" : "/../public/wave.gif",
         "/signup.html" : "/../public/html/signup.html",
         "/login.html" : "/../public/html/login.html",
         "/css/style.css" : "/../public/css/style.css",
         "/css/reset.css" : "/../public/css/reset.css",
+        "/css/mobile.css" : "/../public/css/mobile.css",
         "/js/index.js" : "/../public/js/index.js",
         "/js/login.js" : "/../public/js/login.js",
         "/js/signup.js" : "/../public/js/signup.js"}[url]
 
  const type = {"/" : "text/html",
         "/signup.html" : "text/html",
+        "/wave.gif" : "image/gif",
         "/login.html" : "text/html",
         "/css/style.css" : "text/css",
         "/css/reset.css" : "text/css",
+        "/css/mobile.css" : "text/css",
         "/js/index.js" : "application/javascript",
         "/js/login.js" : "application/javascript",
         "/js/signup.js" : "application/javascript"}[url]
