@@ -27,20 +27,21 @@
 <div class="title">
   <h1>Forum Posts</h1>
 </div>
-<form class="postForm" action="/post" method="post">
-<input class="posting-input" type="text" name="Title" placeholder="Title">
- <input id="postinfContent" class="posting-input" type="text" name="Content" placeholder="Content">
+<form class="postForm" id="postForm" action="/add_post" method="post">
+<input class="posting-input" type="text" name="title" placeholder="Title">
+ <input id="postinfContent" class="posting-input" type="text" name="content" placeholder="Content">
  <button class="postingButton" type="submit" value="button">SHARE YOUR THOUGHTS</button>
 </form>
 </div>
-  </div>
-  <div id="container">
+<div id="container">
+</div>
+
   </div>
   </div>
   <div class="connect2">
     <p class="home"><a href="/">Home</a></p>
   </div>
-
+<script src="../js/post.js"></script>
 </body>
 
 </html>
