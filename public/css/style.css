@@ -1,6 +1,3 @@
-
-@media (min-width:500px)  {
-
 body {
   background-color: #FFE97F;
   height: 90vh;
@@ -8,6 +5,8 @@ body {
   display: flex;
   justify-content: center;
 }
+
+@media (min-width:500px)  {
 
 .errorMessage {
   display: flex;

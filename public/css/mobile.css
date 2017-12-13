@@ -13,13 +13,7 @@
 
 @media (max-width:500px)  {
 
-  body {
-    background-color: #FFE97F;
-    height: 90vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
+
 
   .errorMessage {
     display: flex;
