@@ -1,5 +1,10 @@
-fethc("get_posts", "GET", populate, null);
-
+fetch("get_posts", "GET", populate, null);
+var form = document.getElementById("postForm");
+var username = "";
+/*form.addEventListener("submit", function(event) {
+  event.preventDefault();
+  add_post(username);
+});*/
 function fetch(url, method, cb, parameters) {
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
@@ -14,21 +19,20 @@ function fetch(url, method, cb, parameters) {
 
 function populate(response) {
   var container = document.getElementById("container");
-  container.innerHTML="";
+  container.innerHTML = "";
   if (response.rows) {
+    username = response.username;
+    response.rows.forEach(function(post) {
+      title = document.createElement("h2");
+      title.textContent = post.title;
 
-     response.rows.forEach(post){
-       title =document.createElement("h2");
-       title.textContent = post.title;
-
-       span =document.createElement("span");
-       span.textContent = post.content;
-        container.appendChild(title);
-        container.appendChild(span);
-     }else{
-       message =document.createElement("h2");
-       message.textContent = "Authentication failed Please login again!";
-
-     }
+      span = document.createElement("span");
+      span.textContent = post.content;
+      container.appendChild(title);
+      container.appendChild(span);
+    });
+  } else {
+    message = document.createElement("h2");
+    message.textContent = "Authentication failed Please login again!";
   }
 }

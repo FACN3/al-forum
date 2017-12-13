@@ -13,30 +13,36 @@ const qs = require("querystring");
 const addUserHandler = require("./addUserHandler");
 const router = (req, res) => {
   const url = req.url;
-    console.log(url);
-  const path = {"/" : "/../public/html/index.html",
-        "/wave.gif" : "/../public/wave.gif",
-        "/signup.html" : "/../public/html/signup.html",
-        "/login.html" : "/../public/html/login.html",
-        "/post.html" : "/../public/html/post.html",
-        "/css/style.css" : "/../public/css/style.css",
-        "/css/reset.css" : "/../public/css/reset.css",
-        "/css/mobile.css" : "/../public/css/mobile.css",
-        "/js/index.js" : "/../public/js/index.js",
-        "/js/login.js" : "/../public/js/login.js",
-        "/js/signup.js" : "/../public/js/signup.js"}[url]
+  console.log(url);
+  const path = {
+    "/": "/../public/html/index.html",
+    "/wave.gif": "/../public/wave.gif",
+    "/signup.html": "/../public/html/signup.html",
+    "/login.html": "/../public/html/login.html",
+    "/post.html": "/../public/html/post.html",
+    "/css/style.css": "/../public/css/style.css",
+    "/css/reset.css": "/../public/css/reset.css",
+    "/css/mobile.css": "/../public/css/mobile.css",
+    "/js/index.js": "/../public/js/index.js",
+    "/js/login.js": "/../public/js/login.js",
+    "/js/signup.js": "/../public/js/signup.js",
+    "/js/post.js": "/../public/js/post.js"
+  }[url];
 
- const type = {"/" : "text/html",
-        "/signup.html" : "text/html",
-        "/wave.gif" : "image/gif",
-        "/login.html" : "text/html",
-        "/post.html" : "text/html",
-        "/css/style.css" : "text/css",
-        "/css/reset.css" : "text/css",
-        "/css/mobile.css" : "text/css",
-        "/js/index.js" : "application/javascript",
-        "/js/login.js" : "application/javascript",
-        "/js/signup.js" : "application/javascript"}[url]
+  const type = {
+    "/": "text/html",
+    "/signup.html": "text/html",
+    "/wave.gif": "image/gif",
+    "/login.html": "text/html",
+    "/post.html": "text/html",
+    "/css/style.css": "text/css",
+    "/css/reset.css": "text/css",
+    "/css/mobile.css": "text/css",
+    "/js/index.js": "application/javascript",
+    "/js/login.js": "application/javascript",
+    "/js/signup.js": "application/javascript",
+    "/js/post.js": "application/javascript"
+  }[url];
 
   // console.log(url);
   if (path) {
@@ -94,10 +100,35 @@ const router = (req, res) => {
           if (err) {
             res.end();
           } else {
+            rows.username = result;
             res.end(JSON.stringify(rows));
           }
         });
       }
+    });
+  } else if (url == "/add_post") {
+    let parameters = "";
+    req.on("data", chunk => {
+      parameters += chunk;
+    });
+    req.on("end", () => {
+      const values = qs.parse(parameters);
+      const { title, content } = values;
+
+      validate(cookie.parse(req.headers.cookie), (err, user_id) => {
+        res.writeHead(302, { location: "/" });
+        if (err) {
+          res.end();
+        } else {
+          addPost(title, content, user_id, success => {
+            if (success) {
+              res.end();
+            } else {
+              res.end();
+            }
+          });
+        }
+      });
     });
   } else {
     res.writeHead(404);
