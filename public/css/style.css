@@ -1,3 +1,6 @@
+
+@media (min-width:500px)  {
+
 body {
   background-color: #FFE97F;
   height: 90vh;
@@ -132,4 +135,5 @@ body {
 input[placeholder] {
    text-align: center;
    font-family: Nunito;
+}
 }
