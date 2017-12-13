@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width">
+  <link rel="shortcut icon" href="../favicon.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/mobile.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="utf-8">
+  <title>al forum</title>
+</head>
+
+<body>
+  <div class="connect">
+    <form action="/logout" id="logout" method="POST">
+      <input class="login" type="submit" name="logout" value="Log Out" value="">
+
+    </form>
+  </div>
+  <div class="connect2">
+    <p class="home"><a href="/">Home</a></p>
+  </div>
+  <div class="titles2">
+<div class="posting-wrapper">
+<div class="title">
+  <h1>Forum Posts</h1>
+</div>
+<form class="postForm" action="/post" method="post">
+<input class="posting-input" type="text" name="Title" placeholder="Title">
+ <input id="postinfContent" class="posting-input" type="text" name="Content" placeholder="Content">
+ <button class="postingButton" type="submit" value="button">SHARE YOUR THOUGHTS</button>
+</form>
+</div>
+  </div>
+  <div id="container">
+  </div>
+  </div>
+  <div class="connect2">
+    <p class="home"><a href="/">Home</a></p>
+  </div>
+
+</body>
+
+</html>
