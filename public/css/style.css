@@ -59,7 +59,7 @@ body {
 
 .login-form-input {
   margin: 0.5rem 0;
-
+  display: flex;
 }
 
 .login-form-button {
