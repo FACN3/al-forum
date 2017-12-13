@@ -2,6 +2,8 @@ body {
   background-color: #FFE97F;
   height: 90vh;
   width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .title {
@@ -22,6 +24,14 @@ body {
   margin-top: 1rem;
 }
 
+.titles2 {
+  display: flex;
+  font-family: Nunito;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+}
 
 .login-form-wrapper {
   display: flex;
@@ -45,7 +55,12 @@ body {
   align-self: center;
   margin: 0.5rem 0;
   border-radius: 0.5rem;
+  border: solid 1px black;
   width: 50%;
+  color: white;
+  font-weight: bold;
+  font-family: Nunito;
+  background-color: #7F6A00;
 }
 
 
@@ -60,6 +75,17 @@ body {
   right: 2%;
 }
 
+.connect2 {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-family: Nunito;
+  color: white;
+  top: 2%;
+  left: 2%;
+}
+
+
 .login {
   color: white;
   padding: 0.5rem 1.5rem;
@@ -68,6 +94,19 @@ body {
 }
 
 .login a {
+  text-decoration: none;
+  color: white;
+}
+
+.home {
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: solid 1px black;
+  background-color: #7F6A00;
+}
+
+
+.home a {
   text-decoration: none;
   color: white;
 }
