@@ -15,9 +15,9 @@ module.exports = {
   validate: (cookie, res) => {
     if (cookie.jwt) {
       jwt.verify(cookie.jwt, secret, (err, result) => {
-        if (error) {
+        if (err) {
           res.writeHead(200);
-          res.end("Bad Authentication");
+          res.end(JSON.stringify({ username: "" }));
         } else {
           res.writeHead(200, { "Content-Type": "application/json" });
           res.end(JSON.stringify({ username: result }));
