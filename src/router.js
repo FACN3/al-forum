@@ -116,7 +116,7 @@ const router = (req, res) => {
       const { title, content } = values;
 
       validate(cookie.parse(req.headers.cookie), (err, user_id) => {
-        res.writeHead(302, { location: "/" });
+        res.writeHead(302, { location: "/post.html" });
         if (err) {
           res.end();
         } else {

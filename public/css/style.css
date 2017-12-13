@@ -15,6 +15,26 @@ body {
   justify-content: center;
 }
 
+.postTitle {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+.postMessage {
+  font-weight: normal;
+}
+
+/*.userName {
+  display: flex;
+  align-self: stretch;
+}*/
+
+.userDiv {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .title {
   display: flex;
   font-family: Nunito;
@@ -22,6 +42,15 @@ body {
   font-weight: bold;
   font-size: 500%;
   margin-top: 1rem;
+}
+
+.postDiv {
+border: solid 2.5px black;
+border-radius: 0.5rem;
+margin: 1rem 0;
+padding: 1rem 1rem;
+width: 30rem;
+overflow-wrap: break-word;
 }
 
 .posting-wrapper {
@@ -36,6 +65,7 @@ body {
   justify-content: center;
   flex-direction: column;
   align-item: center;
+
 }
 
 
@@ -47,8 +77,10 @@ body {
   margin: 0.5rem 0
 }
 
-#postinfContent {
-  padding: 5rem 5rem;
+#postingContent {
+  display: flex;
+  padding: 1rem 1rem;
+  text-align: center;
 }
 
 .postingButton {
