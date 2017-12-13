@@ -7,10 +7,13 @@
 
  ##### Welcome to AL Forum Project
 
+In this project we are making a simple basic forum website
+
+You will need to sign up and then log-in to be able to post stuff.
 
  ##### All you have to do is
 
- 
+At the homepage click on the sign-up button and then just log in
 
  ## Architecture
 
@@ -28,9 +31,13 @@
 
   PSQL (Postgres) DataBase
 
+  node
+
  ## Node Packages
 
- ... to be added ...
+ Node tape
+
+ Node tape-spec
 
  ## Installing
 
