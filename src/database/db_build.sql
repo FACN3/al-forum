@@ -3,7 +3,7 @@ BEGIN;
 CREATE TABLE IF NOT EXISTS USERS(
   id serial PRIMARY KEY,
   username varchar(20) NOT NULL,
-  password varchar(30) NOT NULL,
+  password text NOT NULL,
   name varchar(30) NOT NULL,
   admin boolean default false
 );

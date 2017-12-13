@@ -5,7 +5,8 @@ const getUser = require("./database/getUser");
 const addPost = require("./database/addPost");
 const getPosts = require("./database/getPosts");
 const {parse} = require('url');
-
+const qs = require('querystring');
+const addUserHandler = require('./addUserHandler')
 const router = (req, res) => {
   const url = req.url;
   const path = {"/" : "/../public/html/index.html",
@@ -37,7 +38,7 @@ const router = (req, res) => {
 
            res.writeHead(200,{'content-type':"application/json"});
            res.end(JSON.stringify({'state':result}));
-        
+
     })
   } else if(url=="/add_user"){
       paramets="";
@@ -45,9 +46,11 @@ const router = (req, res) => {
         paramets+=chunk;
       });
       req.on('end',()=>{
-        console.log(paramets);
-        res.end();
-      })
+       const values= qs.parse(paramets);
+    const    { username, name, password} = values;
+      addUserHandler(username, name, password, res)
+        console.log(values);
+      });
 
   }else {
     res.writeHead(404);

@@ -1,4 +1,4 @@
-const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const hashPassword = (password, callback) => {
   bcrypt.hash(password, 10, (error, hash)  => {
