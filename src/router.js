@@ -10,7 +10,7 @@ const cookie = require("cookie");
 const { validate } = require("./session");
 const { parse } = require("url");
 const qs = require("querystring");
-
+const isAdmin = require("./database/isAdmin");
 const addUserHandler = require("./addUserHandler");
 const router = (req, res) => {
   const url = req.url;
@@ -84,14 +84,19 @@ const router = (req, res) => {
     });
     res.end();
   } else if (url == "/check_auth") {
-    validate(cookie.parse(req.headers.cookie), (err, result) => {
+    if (req.headers.cookie) {
+      validate(cookie.parse(req.headers.cookie), (err, result) => {
+        res.writeHead(200, { "content-type": "application/javascript" });
+        if (err) {
+          res.end(JSON.stringify({ username: "" }));
+        } else {
+          res.end(JSON.stringify({ username: result }));
+        }
+      });
+    } else {
       res.writeHead(200, { "content-type": "application/javascript" });
-      if (err) {
-        res.end(JSON.stringify({ username: "" }));
-      } else {
-        res.end(JSON.stringify({ username: result }));
-      }
-    });
+      res.end(JSON.stringify({ username: "" }));
+    }
   } else if (url == "/get_posts") {
     if (req.headers.cookie) {
       validate(cookie.parse(req.headers.cookie), (err, result) => {
@@ -103,8 +108,19 @@ const router = (req, res) => {
             if (err) {
               res.end();
             } else {
-              rows.username = result;
-              res.end(JSON.stringify(rows));
+              isAdmin(
+                result,
+                (err,
+                (error, admin) => {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    rows.admin = admin;
+                    rows.username = result;
+                    res.end(JSON.stringify(rows));
+                  }
+                })
+              );
             }
           });
         }
