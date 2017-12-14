@@ -1,5 +1,5 @@
-const secret = "akejrfiuearbfviuserb";
-
+const env = require('env2')('config.env');
+const secret = process.env.SECRET;
 const jwt = require("jsonwebtoken");
 
 module.exports = {
