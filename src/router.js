@@ -10,7 +10,7 @@ const cookie = require("cookie");
 const { validate } = require("./session");
 const { parse } = require("url");
 const qs = require("querystring");
-
+const isAdmin = require("./database/isAdmin");
 const addUserHandler = require("./addUserHandler");
 const router = (req, res) => {
   const url = req.url;
@@ -103,8 +103,19 @@ const router = (req, res) => {
             if (err) {
               res.end();
             } else {
-              rows.username = result;
-              res.end(JSON.stringify(rows));
+              isAdmin(
+                result,
+                (err,
+                (error, admin) => {
+                  if (error) {
+                    console.log(error);
+                  } else {
+                    rows.admin = admin;
+                    rows.username = result;
+                    res.end(JSON.stringify(rows));
+                  }
+                })
+              );
             }
           });
         }
