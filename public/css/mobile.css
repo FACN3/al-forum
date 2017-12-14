@@ -13,8 +13,6 @@
 
 @media (max-width:500px)  {
 
-
-
   .errorMessage {
     display: flex;
     color: red;
@@ -50,11 +48,35 @@
     margin-top: 1rem;
   }
 
+  .postTitle {
+    font-size: 100%;
+    font-weight: bold;
+  }
+
+  .dateTime {
+    font-size: 50%;
+  }
+
+  .postMessage {
+    font-weight: normal;
+  }
+
   .posting-wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 75vh;
+  }
+
+  .postDiv {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border: solid 2.5px black;
+    border-radius: 0.5rem;
+    margin: 1rem 0;
+    padding: 1rem 1rem;
+    width: 20rem;
   }
 
   .postForm {
@@ -68,9 +90,28 @@
   .posting-input {
     display: flex;
     font-family: Nunito;
+    text-align: center;
     justify-content: center;
     font-weight: bold;
     margin: 0.5rem 0
+  }
+
+  .userName {
+    font-size: 75%;
+    align-self: center;
+    margin: 0.5rem 0;
+    padding: 0.2rem 0.2rem;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    color: white;
+    font-weight: bold;
+    background-color: #7f6a00;
+  }
+
+  .userDiv {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
 
   #postinfContent {
@@ -224,5 +265,60 @@
     font-size: 100%;
     margin-top: 1rem;
   }
+
+  #postingContent {
+    padding: 1rem 1rem;
+  }
+
+  .userName {
+    font-size: 75%;
+    align-self: center;
+    margin: 0.5rem 0;
+    padding: 0.2rem 0.2rem;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    color: white;
+    font-weight: bold;
+    background-color: #7f6a00;
+  }
+
+    .userDiv {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .postDiv {
+      display: flex;
+      justify-content: center;
+      border: solid 2.5px black;
+      border-radius: 0.5rem;
+      margin: 1rem 0;
+      padding: 1rem 1rem;
+      width: 10em;
+      overflow-wrap: break-word;
+    }
+
+    .posting-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 75vh;
+    }
+
+    .postForm {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-item: center;
+    }
+
+    .posting-input {
+      display: flex;
+      font-family: Nunito;
+      justify-content: center;
+      font-weight: bold;
+      margin: 0.5rem 0;
+    }
 
 }

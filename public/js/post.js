@@ -31,6 +31,7 @@ function populate(response) {
       timeSpan = document.createElement("span");
 
       timeSpan.textContent = post.timestamp.split(".")[0];
+      timeSpan.className = "dateTime";
 
       div = document.createElement("div");
       div.className = "postDiv";
