@@ -1,7 +1,7 @@
-document.getElementById("logout").addEventListener("submit", function(event) {
+/*document.getElementById("logout").addEventListener("submit", function(event) {
   event.preventDefault();
   this.submit();
-});
+});*/
 logStatus();
 
 function logStatus() {
@@ -11,11 +11,14 @@ function logStatus() {
     function(res) {
       console.log("Respond is", res);
       if (res.username) {
-        document.getElementById("logout").style.display = "block";
+        //  document.getElementById("logout").style.display = "block";
         document.getElementById("login").style.display = "none";
         document.getElementById("signup").style.display = "none";
-        window.location.replace('/post.html');
+        window.location.replace("/post.html");
+        console.log("I was here!");
       } else {
+        console.log("Noo!");
+
         document.getElementById("logout").style.display = "none";
         document.getElementById("login").style.display = "block";
         document.getElementById("signup").style.display = "block";
