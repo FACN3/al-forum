@@ -50,8 +50,8 @@ function populate(response) {
       div.appendChild(timeSpan);
       div.appendChild(userDiv);
       condel.appendChild(span);
-      if (post.user_id === username) {
-        console.log("here");
+
+      if (post.user_id === username || response.admin) {
         var deleteButton = document.createElement("button");
         deleteButton.classList.add('delete');
         deleteButton.innerHTML = "X";
