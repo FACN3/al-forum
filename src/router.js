@@ -93,21 +93,27 @@ const router = (req, res) => {
       }
     });
   } else if (url == "/get_posts") {
-    validate(cookie.parse(req.headers.cookie), (err, result) => {
+    if (req.headers.cookie) {
+      validate(cookie.parse(req.headers.cookie), (err, result) => {
+        res.writeHead(200, { "content-type": "application/javascript" });
+        if (err) {
+          res.end(JSON.stringify({ username: "" }));
+        } else {
+          getPosts((err, rows) => {
+            if (err) {
+              res.end();
+            } else {
+              rows.username = result;
+              res.end(JSON.stringify(rows));
+            }
+          });
+        }
+      });
+    } else {
       res.writeHead(200, { "content-type": "application/javascript" });
-      if (err) {
-        res.end(JSON.stringify({ username: "" }));
-      } else {
-        getPosts((err, rows) => {
-          if (err) {
-            res.end();
-          } else {
-            rows.username = result;
-            res.end(JSON.stringify(rows));
-          }
-        });
-      }
-    });
+
+      res.end(JSON.stringify({ username: "" }));
+    }
   } else if (url == "/add_post") {
     let parameters = "";
     req.on("data", chunk => {
