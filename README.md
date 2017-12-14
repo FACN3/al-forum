@@ -23,24 +23,15 @@ At the homepage click on the sign-up button and then just log in
 
  ![](https://user-images.githubusercontent.com/24490876/33879685-de7c3e52-df37-11e7-912a-33346bf398b5.png)
 
- ## Code languages
 
-  HTML
+ ## How to install and run the site:
 
-  CSS
-
-  PSQL (Postgres) DataBase
-
-  node
-
- ## Node Packages
-
- Node tape
-
- Node tape-spec
-
- ## Installing
-
- To install the packages just go inside the directory in the command line and write
-
- `npm i` or `npm install`
+ 1) Clone the repo by pasting this command ```git clone https://github.com/FACN3/al-forum.git```
+ 
+ 2) Then type `npm i` or `npm install` and proceeded by `npm start`
+ 
+ 3) Enjoy the site
+ 
+ Optionally, you can access the site directly from this link without open it locally:
+ 
+ `https://facn.herokuapp.com/`
