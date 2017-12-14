@@ -31,6 +31,7 @@ function populate(response) {
       timeSpan = document.createElement("span");
 
       timeSpan.textContent = post.timestamp.split(".")[0];
+      timeSpan.className = "dateTime";
 
       div = document.createElement("div");
       div.className = "postDiv";
@@ -52,10 +53,10 @@ function populate(response) {
       if (post.user_id === username) {
         console.log("here");
         var deleteButton = document.createElement("button");
+        deleteButton.classList.add('delete');
         deleteButton.innerHTML = "X";
         deleteButton.addEventListener("click", function(event) {
           div.setAttribute("id", post.id);
-
           deletePost(post.id);
         });
         condel.appendChild(deleteButton);
