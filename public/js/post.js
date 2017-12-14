@@ -17,6 +17,8 @@ function fetch(url, method, cb, parameters) {
   xhr.send(parameters);
 }
 
+
+
 function populate(response) {
   var container = document.getElementById("container");
   container.innerHTML = "";
@@ -30,7 +32,7 @@ function populate(response) {
       userSpan.className = "userName";
       timeSpan = document.createElement("span");
 
-      timeSpan.textContent = post.timestamp.split(".")[0];
+      timeSpan.textContent = new Date(post.timestamp).toUTCString();
       timeSpan.className = "dateTime";
 
       div = document.createElement("div");
