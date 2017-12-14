@@ -84,14 +84,19 @@ const router = (req, res) => {
     });
     res.end();
   } else if (url == "/check_auth") {
-    validate(cookie.parse(req.headers.cookie), (err, result) => {
+    if (req.headers.cookie) {
+      validate(cookie.parse(req.headers.cookie), (err, result) => {
+        res.writeHead(200, { "content-type": "application/javascript" });
+        if (err) {
+          res.end(JSON.stringify({ username: "" }));
+        } else {
+          res.end(JSON.stringify({ username: result }));
+        }
+      });
+    } else {
       res.writeHead(200, { "content-type": "application/javascript" });
-      if (err) {
-        res.end(JSON.stringify({ username: "" }));
-      } else {
-        res.end(JSON.stringify({ username: result }));
-      }
-    });
+      res.end(JSON.stringify({ username: "" }));
+    }
   } else if (url == "/get_posts") {
     if (req.headers.cookie) {
       validate(cookie.parse(req.headers.cookie), (err, result) => {
