@@ -6,6 +6,7 @@ const getPassword = (username, cb) => {
     [username],
     (err, res) => {
       if (err) {
+        console.log(err);
         cb(err);
       } else {
         cb(null, res.rows[0].password);
