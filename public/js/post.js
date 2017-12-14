@@ -53,10 +53,10 @@ function populate(response) {
       if (post.user_id === username) {
         console.log("here");
         var deleteButton = document.createElement("button");
+        deleteButton.classList.add('delete');
         deleteButton.innerHTML = "X";
         deleteButton.addEventListener("click", function(event) {
           div.setAttribute("id", post.id);
-
           deletePost(post.id);
         });
         condel.appendChild(deleteButton);

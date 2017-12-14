@@ -108,6 +108,26 @@
     background-color: #7f6a00;
   }
 
+  .delete {
+    font-size: 50%;
+    align-self: center;
+    margin: 0.5rem 0;
+    border-radius: 0.5rem;
+    border: solid 1px black;
+    color: white;
+    font-weight: bold;
+    background-color: #dc7575;
+  }
+
+  .condel {
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    border-radius: 2rem;
+    width: 100%;
+  }
+
+
   .userDiv {
     display: flex;
     justify-content: space-between;
