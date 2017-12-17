@@ -15,9 +15,10 @@ You will need to sign up and then log-in to be able to post stuff.
 
 At the homepage click on the sign-up button and then just log in
 
- ## Architecture
+ ## Sketch Design for the website
+ An sketch design made in Pinata to discuss on how the website should look in the finale version 
 
- ... to be added ...
+![](https://user-images.githubusercontent.com/24490876/34077755-57f9f136-e314-11e7-8c98-180cf1c94a4e.jpg)
 
  ## Scheme Diagram
 
