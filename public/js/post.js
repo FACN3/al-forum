@@ -62,8 +62,25 @@ function populate(response) {
           deletePost(post.id);
         });
         condel.appendChild(deleteButton);
-      }
+     var likes;
+        if(post.likes){
+           var count=post.likes.length;
 
+           var liked= post.likes.reduce(function(acc,like){
+              acc.push(like.user_id);
+              return acc;
+           },[]).includes(username);
+
+            console.log(post.likes);
+          likes =  createLike(liked,count,post.likes);
+          console.log(post.likes);
+        }else{
+        likes =  createLike(false,0);
+        }
+
+
+      }
+       condel.appendChild(likes);
       div.appendChild(condel);
       container.appendChild(div);
       span.className = "postMessage";
@@ -72,6 +89,28 @@ function populate(response) {
   } else {
     message = document.createElement("h2");
     message.textContent = "Authentication failed Please login again!";
+  }
+
+  function createLike(liked,counts,likes){
+    var likeButton = document.createElement("button");
+    var h4=document.createElement("h4");
+      if (liked){
+        likeButton.innerHTML = '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+         h4.innerHTML=counts;
+      }
+
+    else{
+      likeButton.innerHTML = '<i class="fa fa-hand-o-up" aria-hidden="true"></i>';
+       if(counts>0)  h4.innerHTML=counts;
+
+    }
+
+  var likeCon= document.createElement("div");
+  likeCon.appendChild(likeButton);
+  likeCon.appendChild(h4);
+
+  return likeCon;
+
   }
 
   function deletePost(postId) {
