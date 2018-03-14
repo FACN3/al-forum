@@ -168,6 +168,33 @@ const router = (req, res) => {
         });
       }
     });
+  }else if (url.split("?")[0]=="/delete_like"){
+    validate(cookie.parse(req.headers.cookie), (err, user_id) => {
+      if (err) {
+        res.end(JSON.stringify({done: false}));
+      } else {
+        res.writeHead(200, {"content-type": "application/json"});
+        deleteLike(url.split("=")[1], (result) => {
+            res.end(JSON.stringify({done: true}));
+
+        });
+      }
+    });}
+        else if (url.split("?")[0]=="/like_post"){
+          validate(cookie.parse(req.headers.cookie), (err, user_id) => {
+            if (err) {
+              res.end(JSON.stringify({done: false}));
+            } else {
+              res.writeHead(200, {"content-type": "application/json"});
+
+             addLike(user_id,url.split("=")[1],0,(result) => {
+                 res.end(JSON.stringify({done: true}));
+
+             });
+      }
+    });
+
+
   } else {
     res.writeHead(404);
     res.end("page not found");
