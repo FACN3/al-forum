@@ -131,13 +131,15 @@ function populate(response) {
 
         if (liked) {
 
-          var id = likes.reduce(function(acc, like) {
+        /*  var id = likes.reduce(function(acc, like) {
             if (like.user_id === username) {
               acc = like.id;
             }
             return acc;
           }, 0);
-          deleteLike(id, function(result) {
+*/
+          //console.log(id);
+          deleteLike(postIdd, function(result) {
 
             if (result) {
               liked = !liked;
@@ -165,6 +167,7 @@ function populate(response) {
               liked = !liked;
               likeButton.innerHTML = '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
               document.getElementById("loader").style.display = "none";
+              if(counts==0) likers=[];
               counts += 1;
               h4.innerHTML = counts;
             //  modal.innerHTML = modal.innerHTML + "<br>" + username;
@@ -182,8 +185,8 @@ function populate(response) {
 
     }
 
-    function deleteLike(likeId, cb) {
-      fetch("/delete_like?likeid=" + likeId, "GET", cb);
+    function deleteLike(postIdd, cb) {
+      fetch("/delete_like?likeid=" + postIdd, "GET", cb);
     }
 
     function addLike(likeId, cb) {

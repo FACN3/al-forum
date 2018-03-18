@@ -174,7 +174,7 @@ const router = (req, res) => {
         res.end(JSON.stringify({done: false}));
       } else {
         res.writeHead(200, {"content-type": "application/json"});
-        deleteLike(url.split("=")[1], (result) => {
+        deleteLike(url.split("=")[1],user_id, (result) => {
             res.end(JSON.stringify({done: true}));
 
         });
