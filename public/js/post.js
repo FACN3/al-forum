@@ -55,6 +55,8 @@ function populate(response) {
       div.appendChild(timeSpan);
       div.appendChild(userDiv);
       condel.appendChild(span);
+  var likesAndDelete = document.createElement("div");
+  likesAndDelete.className="likesAndDelete";
 
       if (post.user_id === username || response.admin) {
         var deleteButton = document.createElement("button");
@@ -64,7 +66,7 @@ function populate(response) {
           div.setAttribute("id", post.id);
           deletePost(post.id);
         });
-        condel.appendChild(deleteButton);
+        likesAndDelete.appendChild(deleteButton);
 
       }
 
@@ -89,7 +91,8 @@ function populate(response) {
         likes = createLike(false, 0, null, post.id);
       }
 
-      condel.appendChild(likes);
+      likesAndDelete.appendChild(likes);
+      condel.appendChild(likesAndDelete);
       div.appendChild(condel);
       container.appendChild(div);
       span.className = "postMessage";
@@ -178,6 +181,7 @@ function populate(response) {
         }
 
       });
+      likeCon.className="likes";
       likeCon.appendChild(likeButton);
       likeCon.appendChild(h4);
 

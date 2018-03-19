@@ -7,6 +7,10 @@ body {
   justify-content: center;
 }
 
+h4{
+  margin: 0.5rem;
+}
+
 #loader {
 
   position: fixed;
@@ -27,16 +31,16 @@ body {
 }
 .likes {
 
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  z-index: 1;
-  width: 150px;
-  height: 150px;
-  margin: -75px 0 0 -75px;
-  width: 120px;
-  height: 120px;
-  display: none;
+display: flex;
+flex-direction: column;
+
+}
+
+.likesAndDelete{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
 }
 
 .modal {
@@ -63,6 +67,13 @@ body {
 
 
 
+.postMessage {
+  font-weight: normal;
+  float: left;
+  word-break: break-all;
+  width: 17rem;
+
+}
 
 @-webkit-keyframes spin {
   0% { -webkit-transform: rotate(0deg); }
@@ -112,11 +123,13 @@ body {
 
   .postMessage {
     font-weight: normal;
+    word-break: break-all;
+    width: 27rem;
   }
 
   .delete {
-    height: 100%;
-    font-size: 75%;
+    height: 1.5rem;
+    font-size: 100%;
     align-self: center;
     margin: 0.5rem 0;
     border-radius: 0.5rem;
