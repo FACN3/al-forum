@@ -1,11 +1,15 @@
 fetch("get_posts", "GET", populate, null);
 var form = document.getElementById("postForm");
 var username = "";
+var modal = document.getElementById('myModal');
+var modalC = document.getElementById('toAdd');
+
 /*form.addEventListener("submit", function(event) {
   event.preventDefault();
   add_post(username);
 });*/
 function fetch(url, method, cb, parameters) {
+  console.log("Erer");
   var xhr = new XMLHttpRequest();
   xhr.onreadystatechange = function() {
     if (xhr.status === 200 && xhr.readyState === 4) {
@@ -17,9 +21,8 @@ function fetch(url, method, cb, parameters) {
   xhr.send(parameters);
 }
 
-
-
 function populate(response) {
+
   var container = document.getElementById("container");
   container.innerHTML = "";
   if (response.rows) {
@@ -52,6 +55,8 @@ function populate(response) {
       div.appendChild(timeSpan);
       div.appendChild(userDiv);
       condel.appendChild(span);
+  var likesAndDelete = document.createElement("div");
+  likesAndDelete.className="likesAndDelete";
 
       if (post.user_id === username || response.admin) {
         var deleteButton = document.createElement("button");
@@ -61,34 +66,165 @@ function populate(response) {
           div.setAttribute("id", post.id);
           deletePost(post.id);
         });
-        condel.appendChild(deleteButton);
+        likesAndDelete.appendChild(deleteButton);
+
       }
 
+      var likes;
+      if (post.likes) {
+        var count = post.likes.length;
+
+        var liked = post.likes.reduce(function(acc, like) {
+          acc.push(like.user_id);
+          return acc;
+        }, []).includes(username);
+        var likers = post.likes.reduce(function(acc, raw) {
+          acc.push(raw.user_id);
+          return acc;
+        }, [])
+
+        //  console.log(post.likes);
+        likes = createLike(liked, count, post.likes, post.id, likers);
+
+        //  console.log("post id is",post.id);
+      } else {
+        likes = createLike(false, 0, null, post.id);
+      }
+
+      likesAndDelete.appendChild(likes);
+      condel.appendChild(likesAndDelete);
       div.appendChild(condel);
       container.appendChild(div);
       span.className = "postMessage";
-      console.log("this is userid", post.user_id);
+      //  console.log("this is userid", post.user_id);
     });
   } else {
     message = document.createElement("h2");
     message.textContent = "Authentication failed Please login again!";
-  }
+  }}
 
-  function deletePost(postId) {
-    fetch(
-      "/delete_post?postid=" + postId,
-      "GET",
-      function(response) {
+  function createLike(liked, counts, likes, postIdd, likers) {
+    //console.log(likers);
+  //  console.log("here from likes," + postIdd);
+    var likeButton = document.createElement("button");
+    var h4 = document.createElement("h4");
+    h4.addEventListener('click', function(event) {
+      listLikers(modalC, likers);
+      modal.style.display = "block";
+
+    });
+  //
+    if (liked) {
+      likeButton.innerHTML = '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+      //  fetch("unlike?id="+post, "GET", populate, null);
+
+      h4.innerHTML = counts;
+
+    } else {
+      likeButton.innerHTML = '<i class="fa fa-hand-o-up" aria-hidden="true"></i>';
+      if (counts > 0) {
+        h4.innerHTML = counts;
+
+      }}
+
+      var likeCon = document.createElement("div");
+      likeButton.addEventListener('click', function(event) {
+
+        document.getElementById("loader").style.display = "block";
+
+        if (liked) {
+
+        /*  var id = likes.reduce(function(acc, like) {
+            if (like.user_id === username) {
+              acc = like.id;
+            }
+            return acc;
+          }, 0);
+*/
+          //console.log(id);
+          deleteLike(postIdd, function(result) {
+
+            if (result) {
+              liked = !liked;
+              likeButton.innerHTML = '<i class="fa fa-hand-o-up" aria-hidden="true"></i>';
+              document.getElementById("loader").style.display = "none";
+              if (counts == 1) {
+                h4.innerHTML = "";
+                likers = [];
+                //listLikers(modal, likers);
+
+              } else {
+                h4.innerHTML = counts - 1;
+              }
+              likers.splice(likers.indexOf(username), 1);
+              //listLikers(modal, likers);
+              counts -= 1;
+
+            }
+          });
+
+        } else {
+
+          addLike(postIdd, function(result) {
+            if (result.done) {
+              liked = !liked;
+              likeButton.innerHTML = '<i class="fa fa-thumbs-up" aria-hidden="true"></i>';
+              document.getElementById("loader").style.display = "none";
+              if(counts==0) likers=[];
+              counts += 1;
+              h4.innerHTML = counts;
+            //  modal.innerHTML = modal.innerHTML + "<br>" + username;
+              likers.push(username)
+            }
+
+          });
+        }
+
+      });
+      likeCon.className="likes";
+      likeCon.appendChild(likeButton);
+      likeCon.appendChild(h4);
+
+      return likeCon;
+
+    }
+
+    function deleteLike(postIdd, cb) {
+      fetch("/delete_like?likeid=" + postIdd, "GET", cb);
+    }
+
+    function addLike(likeId, cb) {
+
+      fetch("/like_post?likeid=" + likeId, "GET", cb);
+    }
+
+    function deletePost(postId) {
+      fetch("/delete_post?postid=" + postId, "GET", function(response) {
         if (response.deleted) {
           window.location.reload();
         } else {
           alert("Something happend Unfortunately You can't delete");
         }
-      },
-      null
-    );
+      }, null);
 
-    //    document.getElementById(postId).innerHTML = "";
-    console.log(postId);
+      //    document.getElementById(postId).innerHTML = "";
+      //  console.log(postId);
+    }
+
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
-}
+
+  function listLikers(modal, likers) {
+    modal.innerHTML = "";
+    var htmlContent = "";
+
+    likers.forEach(function(liker) {
+      htmlContent += "<br/>";
+      htmlContent += liker;
+    });
+    modal.innerHTML = htmlContent;
+  }
