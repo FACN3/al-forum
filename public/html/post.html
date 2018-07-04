@@ -42,6 +42,10 @@
         <form class="postForm" id="postForm" action="/add_post" method="post">
           <input class="posting-input" type="text" name="title" placeholder="Title">
           <textarea id="postingContent" cols="40" rows="10" class="posting-input" type="text" name="content" placeholder="Content" style=""></textarea>
+           <select name="privacy">
+            <option value="true">Private</option>
+            <option value="false">Public</option>
+          </select>
           <button class="postingButton" type="submit" value="button">SHARE YOUR THOUGHTS</button>
         </form>
       </div>
