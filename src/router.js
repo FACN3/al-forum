@@ -118,6 +118,7 @@ const router = (req, res) => {
 getPublicPosts().then(JSON.stringify)
       .then(res.end)
       .catch(function(err){
+        res.header("Access-Control-Allow-Origin", "*");
         res.end(JSON.stringify({username: ""}));
       })
 
