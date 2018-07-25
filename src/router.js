@@ -115,7 +115,7 @@ const router = (req, res) => {
 
   }else if (url=='/get_public_posts'){
 
-res.writeHead("Access-Control-Allow-Origin", "*");
+res.setHeader("Access-Control-Allow-Origin", "*");
 getPublicPosts().then(JSON.stringify)
       .then(res.end)
       .catch(function(err){
