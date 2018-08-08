@@ -1,17 +1,21 @@
 const pool = require("./db_connection");
 
-const isAdmin = (username, cb) => {
+const isAdmin = (array) => {
+  return new Promise(function(resolve,reject){
   pool.query(
     "SELECT admin FROM users WHERE username=$1",
-    [username],
+    [array.username],
     (err, res) => {
       if (err) {
-        cb(err);
+        reject(err);
       } else {
-        cb(null, res.rows[0].admin);
+        console.log("dmin how,",res.rows.length)
+        array.admin = res.rows[0].admin;
+        resolve(array);
       }
     }
   );
+  })
 };
 
 module.exports = isAdmin;

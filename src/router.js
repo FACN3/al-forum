@@ -15,6 +15,7 @@ const qs = require("querystring");
 const isAdmin = require("./database/isAdmin");
 const addUserHandler = require("./addUserHandler");
 const router = (req, res) => {
+  res.end=res.end.bind(res);
   const url = req.url;
   console.log(url);
   const path = {
@@ -87,48 +88,30 @@ const router = (req, res) => {
     });
     res.end();
   } else if (url == "/check_auth") {
-    if (req.headers.cookie) {
-      validate(cookie.parse(req.headers.cookie), (err, result) => {
-        res.writeHead(200, {"content-type": "application/javascript"});
-        if (err) {
-          res.end(JSON.stringify({username: ""}));
-        } else {
-          res.end(JSON.stringify({username: result}));
-        }
-      });
-    } else {
-      res.writeHead(200, {"content-type": "application/javascript"});
-      res.end(JSON.stringify({username: ""}));
-    }
-  } else if (url == "/get_posts") {
-    if (req.headers.cookie) {
-      validate(cookie.parse(req.headers.cookie), (err, result) => {
-        res.writeHead(200, {"content-type": "application/javascript"});
-        if (err) {
-          res.end(JSON.stringify({username: ""}));
-        } else {
-          getPosts((err, rows) => {
-            if (err) {
-              res.end();
-            } else {
-              isAdmin(result, (err, (error, admin) => {
-                if (error) {
-                  console.log(error);
-                } else {
-                  rows.admin = admin;
-                  rows.username = result;
-                  res.end(JSON.stringify(rows));
-                }
-              }));
-            }
-          });
-        }
-      });
-    } else {
-      res.writeHead(200, {"content-type": "application/javascript"});
 
-      res.end(JSON.stringify({username: ""}));
-    }
+    res.writeHead(200, {"content-type": "application/javascript"});
+      validate(req.headers.cookie)
+      .then(function(username){
+        res.end(JSON.stringify({username:username}));
+      })
+      .catch(function(err){
+        res.end(JSON.stringify({username: ""}));
+      })
+
+
+  } else if (url == "/get_posts") {
+
+    res.writeHead(200, {"content-type": "application/javascript"});
+
+      validate(req.headers.cookie)
+      .then(getPosts)
+      .then(isAdmin)
+      .then(JSON.stringify)
+      .then(res.end)
+      .catch(function(err){
+        res.end(JSON.stringify({username: ""}));
+      })
+
   } else if (url == "/add_post") {
     let parameters = "";
     req.on("data", chunk => {
@@ -137,12 +120,10 @@ const router = (req, res) => {
     req.on("end", () => {
       const values = qs.parse(parameters);
       const {title, content} = values;
+      res.writeHead(302, {location: "/post.html"});
 
-      validate(cookie.parse(req.headers.cookie), (err, user_id) => {
-        res.writeHead(302, {location: "/post.html"});
-        if (err) {
-          res.end();
-        } else {
+      validate(req.headers.cookie).then(function(user_id){
+
           addPost(title, content, user_id, success => {
             if (success) {
               res.end();
@@ -150,50 +131,54 @@ const router = (req, res) => {
               res.end();
             }
           });
-        }
-      });
+
+}).catch(res.end);
     });
   } else if (url.split("?")[0] == "/delete_post") {
-    validate(cookie.parse(req.headers.cookie), (err, user_id) => {
-      if (err) {
-        res.end(JSON.stringify({delteted: false}));
-      } else {
+
+    res.writeHead(200, {"content-type": "application/json"});
+
+   validate(req.headers.cookie).then(function(user_id){
+     deletePost(url.split("=")[1], (err, success) => {
+       if (err) {
+         res.end(JSON.stringify({deleted: false}));
+       } else {
+         res.end(JSON.stringify({deleted: true}));
+
+       }
+
+   });
+ }).catch(function(err){
+     res.end(JSON.stringify({deleted: false}));
+
+   });
+
+
+  } else if (url.split("?")[0] == "/delete_like") {
+    validate(req.headers.cookie).then((user_id) => {
+
         res.writeHead(200, {"content-type": "application/json"});
-        deletePost(url.split("=")[1], (err, success) => {
-          if (err) {
-            res.end(JSON.stringify({deleted: false}));
-          } else {
-            res.end(JSON.stringify({deleted: true}));
-          }
+        deleteLike(url.split("=")[1], user_id, (result) => {
+          res.end(JSON.stringify({done: true}));
+
         });
-      }
-    });
-  }else if (url.split("?")[0]=="/delete_like"){
-    validate(cookie.parse(req.headers.cookie), (err, user_id) => {
-      if (err) {
+    }).catch(function(err){
         res.end(JSON.stringify({done: false}));
-      } else {
+
+      });
+  } else if (url.split("?")[0] == "/like_post") {
+
+    validate(req.headers.cookie).then((user_id) => {
         res.writeHead(200, {"content-type": "application/json"});
-        deleteLike(url.split("=")[1],user_id, (result) => {
-            res.end(JSON.stringify({done: true}));
+
+        addLike(user_id, url.split("=")[1], 0, (result) => {
+          res.end(JSON.stringify({done: true}));
 
         });
-      }
-    });}
-        else if (url.split("?")[0]=="/like_post"){
-          validate(cookie.parse(req.headers.cookie), (err, user_id) => {
-            if (err) {
-              res.end(JSON.stringify({done: false}));
-            } else {
-              res.writeHead(200, {"content-type": "application/json"});
+    }).catch(function(err){
+        res.end(JSON.stringify({done: false}));
 
-             addLike(user_id,url.split("=")[1],0,(result) => {
-                 res.end(JSON.stringify({done: true}));
-
-             });
-      }
-    });
-
+      });
 
   } else {
     res.writeHead(404);
