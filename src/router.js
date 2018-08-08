@@ -4,6 +4,7 @@ const addLike = require("./database/addLike");
 const checkUser = require("./database/checkUser");
 const getUser = require("./database/getUser");
 const addPost = require("./database/addPost");
+const getPublicPosts = require("./database/getPublicPosts");
 const getPosts = require("./database/getPosts");
 const comparePasswordHelper = require("./comparePasswordHelper");
 const deletePost = require("./database/deletePost");
@@ -112,6 +113,16 @@ const router = (req, res) => {
         res.end(JSON.stringify({username: ""}));
       })
 
+  }else if (url=='/get_public_posts'){
+
+res.setHeader("Access-Control-Allow-Origin", "*");
+getPublicPosts().then(JSON.stringify)
+      .then(res.end)
+      .catch(function(err){
+        res.end(JSON.stringify({error: ""}));
+      })
+
+
   } else if (url == "/add_post") {
     let parameters = "";
     req.on("data", chunk => {
@@ -119,12 +130,15 @@ const router = (req, res) => {
     });
     req.on("end", () => {
       const values = qs.parse(parameters);
-      const {title, content} = values;
+      const {title, content,privacy} = values;
+      console.log(title,content,privacy);
+      //res.end("Check your console please");
+
       res.writeHead(302, {location: "/post.html"});
 
       validate(req.headers.cookie).then(function(user_id){
 
-          addPost(title, content, user_id, success => {
+          addPost(title, content, privacy, user_id, success => {
             if (success) {
               res.end();
             } else {
